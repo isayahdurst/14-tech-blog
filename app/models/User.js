@@ -1,7 +1,12 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../../config/connection');
+const bcrypt = require('bcrypt');
 
-class User extends Model {}
+class User extends Model {
+    async checkPassword(password) {
+        return await bcrypt.compare(password, this.password);
+    }
+}
 
 User.init(
     {
@@ -35,7 +40,17 @@ User.init(
         },
     },
     {
-        hooks: {},
+        hooks: {
+            async beforeCreate(user) {
+                const saltRounds = 10;
+                const hashedPassword = await bcrypt.hash(
+                    user.password,
+                    saltRounds
+                );
+                user.password = hashedPassword;
+                return user;
+            },
+        },
         sequelize,
         useIndividualHooks: true,
         timestamps: true,

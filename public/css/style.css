@@ -1,0 +1,26 @@
+body {
+    font-family: 'Inconsolata', monospace;
+}
+
+.animated {
+    animation: float-in 0.75s ease-out;
+}
+
+@keyframes float-in {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.post {
+    transition: all 0.1s ease-in-out;
+}
+.post:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}

@@ -15,22 +15,11 @@ module.exports = async (req, res, next) => {
             },
         });
 
-        if (!user) {
-            res.redirect('/');
-            return;
+        if (user) {
+            req.user = user;
         }
-
-        req.user = user;
-        next();
     } catch (error) {
-        if (
-            error.message === 'invalid token' ||
-            error.message === 'jwt must be provided'
-        ) {
-            res.redirect('/');
-        } else {
-            console.log(error);
-            res.json({ message: error.message });
-        }
+        console.log(error);
     }
+    next();
 };

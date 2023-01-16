@@ -2,6 +2,7 @@ const { Router } = require('express');
 const { Op } = require('sequelize');
 const jwt = require('jsonwebtoken');
 const User = require('../../models/User');
+const { findOne } = require('../../models/User');
 
 const userRouter = new Router();
 
@@ -26,7 +27,7 @@ userRouter.post('/register', async (req, res) => {
     });
 
     if (user) {
-        throw new Error('User already exists.');
+        res.json('User already exists');
     }
 
     try {
@@ -44,12 +45,42 @@ userRouter.post('/register', async (req, res) => {
 
         const token = jwt.sign({ id: username }, process.env.JWT_KEY);
         res.cookie('loginToken', token, { httpOnly: true });
-        res.json({
-            id: user.id,
-        });
+        res.json({ message: 'logged in' });
     } catch (error) {
         console.log(error.message);
         res.json({ message: error.message });
     }
+});
+
+userRouter.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+
+    const user = await User.findOne({
+        where: {
+            username: username,
+        },
+    });
+
+    if (!user) {
+        res.status(400).json({ message: 'User not found' });
+    }
+
+    const correctPassword = await user.checkPassword(password);
+
+    if (!correctPassword) {
+        res.status(401).json({ message: 'Incorred password' });
+    }
+
+    const token = jwt.sign({ id: username }, process.env.JWT_KEY);
+    res.cookie('loginToken', token, { httpOnly: true });
+    res.json({ message: 'Logged in successfully' });
+});
+
+userRouter.get('/logout', async (req, res) => {
+    res.clearCookie('loginToken', {
+        path: '/',
+        domain: process.env.DOMAIN || 'localhost',
+        expires: new Date(1),
+    }).redirect('/');
 });
 module.exports = userRouter;

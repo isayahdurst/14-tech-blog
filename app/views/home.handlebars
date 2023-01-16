@@ -1,9 +1,18 @@
 <div class='container'>
-    <section class='section is-large mt-0 animated'>
-        <h1 class='title'><span class='has-text-info'>const</span>
-            🔽 =
-            <span class='has-text-danger'>new</span>
-            blogPosts;</h1>
+    <section class='section'>
+        {{#unless user}}
+            <div class='notification is-warning'>
+                <button class='delete'></button>
+                <p>Psst! The tech blog is better when you're signed in.
+                    <b>Create an account or log in.</b></p>
+            </div>
+        {{/unless}}
+    </section>
+
+    <section class='section is-large my-0 py-5 animated'>
+        <h1 class='title'><span class='has-text-danger'>new</span>
+            blogPosts;
+            <span class='has-text-grey-light'>// New Blog Posts</span></h1>
         <div class='tile is-ancestor'>
             <div class='tile is-vertical is-8'>
                 <div class='tile'>
@@ -66,5 +75,17 @@
                 </article>
             </div>
         </div>
+    </section>
+    <section class='section animated is-large mt-5 pt-5'>
+        <h2 class='title'>[<span
+                class='has-text-danger'
+            >...</span>allBlogPosts];
+            <span class='has-text-grey-light'>// All Blog Posts</span></h2>
+        {{#each posts as |post|}}
+            <div class='box post has-background-info'>
+                <p class='title has-text-white'>{{post.title}}</p>
+                <p class='subtitle has-text-white'>{{post.content}}</p>
+            </div>
+        {{/each}}
     </section>
 </div>
