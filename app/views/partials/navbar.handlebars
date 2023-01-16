@@ -1,0 +1,254 @@
+<div class='container is-fluid has-background-dark'>
+
+    <nav
+        class='navbar has-background-dark'
+        role='navigation'
+        aria-label='main navigation'
+    >
+        <div class='navbar-brand'>
+            <a
+                class='navbar-item has-text-info'
+                href='/'
+                style='font-size: x-large;'
+            >
+                <b>&lt Tech Blog /&gt </b>
+            </a>
+
+            <a
+                role='button'
+                class='navbar-burger'
+                aria-label='menu'
+                aria-expanded='false'
+                data-target='navbarBasicExample'
+            >
+                <span aria-hidden='true'></span>
+                <span aria-hidden='true'></span>
+                <span aria-hidden='true'></span>
+            </a>
+        </div>
+
+        <div id='navbarBasicExample' class='navbar-menu'>
+            <div class='navbar-start'>
+                <a class='navbar-item has-text-white'>
+                    Home
+                </a>
+
+                <a class='navbar-item has-text-white'>
+                    Dashboard
+                </a>
+
+            </div>
+
+            <div class='navbar-end'>
+                <div class='navbar-item'>
+                    {{#unless user}}
+                        <div class='buttons'>
+                            <a class='button is-info' id='sign-up-btn'>
+                                <strong>Sign up</strong>
+                            </a>
+                            <a class='button is-light' id='log-in-btn'>
+                                Log in
+                            </a>
+                        </div>
+                    {{/unless}}
+                    {{#if user}}
+                        <div class='buttons'>
+                            <a class='button is-light'>
+                                Log out
+                            </a>
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+
+    </nav>
+</div>
+
+<div class='modal' id='login-modal'>
+    <div class='modal-background'></div>
+    <div class='modal-card'>
+        <header class='modal-card-head'>
+            <p class='modal-card-title'>Login</p>
+            <button class='delete' aria-label='close'></button>
+        </header>
+        <section class='modal-card-body'>
+            <form id='login_form'>
+
+                <div class='field'>
+                    <label class='label'>Username</label>
+                    <div class='control has-icons-left'>
+                        <input
+                            class='input'
+                            id='username'
+                            type='text'
+                            placeholder='Username'
+                        />
+                        <span class='icon is-small is-left'>
+                            <i class='fas fa-user'></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class='field'>
+                    <label class='label'>Password</label>
+                    <div class='control has-icons-left'>
+                        <input
+                            class='input'
+                            id='password'
+                            type='password'
+                            placeholder='Password'
+                        />
+                        <span class='icon is-small is-left'>
+                            <i class='fa-solid fa-lock'></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class='field'>
+                    <p class='help is-danger' id='loginError'></p>
+                </div>
+
+            </form>
+        </section>
+        <footer class='modal-card-foot'>
+            {{! <button class='button' id='submit-login'><span
+                    class='has-text-info'
+                ><b>function</b></span><span class='has-text-success'><b>&nbsp;
+                        login( )</b></span></button> }}
+            <button class='button is-info' id='submit-login'>
+                <b>Login( )</b>
+            </button>
+            <button class='button cancel has-text-danger' id='cancel-login'><b
+                >Abort( )</b></button>
+        </footer>
+    </div>
+</div>
+
+<div class='modal' id='signup-modal'>
+    <div class='modal-background'></div>
+    <div class='modal-card'>
+        <header class='modal-card-head'>
+            <p class='modal-card-title'>Sign-Up</p>
+            <button class='delete' aria-label='close'></button>
+        </header>
+        <section class='modal-card-body'>
+            <form
+                id='signup_form'
+                enctype='multipart/form-data'
+                action='/register'
+                method='post'
+            >
+
+                <div class='field'>
+                    <label class='label'>First Name</label>
+                    <div class='control has-icons-left has-icons-right'>
+                        <input
+                            class='input'
+                            name='first_name'
+                            id='first_name_signup'
+                            type='text'
+                            placeholder='John'
+                        />
+                        <span class='icon is-small is-left'>
+                            <i class='fas fa-user'></i>
+                        </span>
+                        <span class='icon is-small is-right'>
+                            <i class='fas' id='first-name-check'></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class='field'>
+                    <label class='label'>Last Name</label>
+                    <div class='control has-icons-left has-icons-right'>
+                        <input
+                            class='input'
+                            name='last_name'
+                            id='last_name_signup'
+                            type='text'
+                            placeholder='Smith'
+                        />
+                        <span class='icon is-small is-left'>
+                            <i class='fas fa-user'></i>
+                        </span>
+                        <span class='icon is-small is-right'>
+                            <i class='fas' id='last-name-check'></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class='field'>
+                    <label class='label'>Username</label>
+                    <div class='control has-icons-left has-icons-right'>
+                        <input
+                            class='input'
+                            name='username'
+                            id='username_signup'
+                            type='text'
+                            placeholder='Username'
+                        />
+                        <span class='icon is-small is-left'>
+                            <i class='fas fa-user'></i>
+                        </span>
+                        <span class='icon is-small is-right'>
+                            <i class='fas' id='username-check'></i>
+                        </span>
+                    </div>
+                    <p class='help' id='username-help'></p>
+                </div>
+
+                <div class='field'>
+                    <label class='label'>Email</label>
+                    <div class='control has-icons-left has-icons-right'>
+                        <input
+                            class='input'
+                            name='email'
+                            id='email_signup'
+                            type='text'
+                            placeholder='welcome@tech-blog.com'
+                        />
+                        <span class='icon is-small is-left'>
+                            <i class='fa-solid fa-envelope'></i>
+                        </span>
+                        <span class='icon is-small is-right'>
+                            <i class='fas' id='email-check'></i>
+                        </span>
+                    </div>
+                    <p class='help is-danger' id='email-help'></p>
+                </div>
+
+                <div class='field'>
+                    <label class='label'>Password</label>
+                    <div class='control has-icons-left has-icons-right'>
+                        <input
+                            class='input'
+                            name='password'
+                            id='password_signup'
+                            type='password'
+                            placeholder='Super Secret Password'
+                        />
+                        <span class='icon is-small is-left'>
+                            <i class='fa-solid fa-lock'></i>
+                        </span>
+                        <span class='icon is-small is-right'>
+                            <i class='fas' id='password-check'></i>
+                        </span>
+                    </div>
+                    <p class='help is-danger' id='password-help'></p>
+                </div>
+
+                <div class='field'>
+                    <p class='help is-danger' id='signupError'></p>
+                </div>
+
+            </form>
+
+        </section>
+        <footer class='modal-card-foot'>
+            <button class='button is-success' id='submit-signup'>Create Account</button>
+            <button class='button cancel-signup'>Cancel</button>
+        </footer>
+    </div>
+</div>
+<script src='../js/login.js'></script>
