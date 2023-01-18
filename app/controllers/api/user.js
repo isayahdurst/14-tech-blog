@@ -28,6 +28,7 @@ userRouter.post('/register', async (req, res) => {
 
     if (user) {
         res.json('User already exists');
+        return;
     }
 
     try {
