@@ -56,5 +56,14 @@
             Create Post
         </button>
     </section>
+    <section class='section' id='user-posts'>
+        {{#each posts as |post|}}
+            <div class='box post has-background-info' data-id={{post.id}}>
+                <p class='title has-text-white'>{{post.title}}</p>
+                <p class='subtitle has-text-white'>{{post.content}}</p>
+                <small class='has-text-white'>{{post.createdAt}}</small>
+            </div>
+        {{/each}}
+    </section>
 </div>
 <script src='../js/dashboard.js'></script>

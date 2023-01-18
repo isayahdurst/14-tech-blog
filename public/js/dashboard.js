@@ -3,6 +3,7 @@ const submitPostBtn = document.getElementById('submit-post-btn');
 const cancelPostBtn = document.getElementById('cancel-post-btn');
 const titleEl = document.getElementById('post-title');
 const contentEl = document.getElementById('post-content');
+const posts = document.querySelectorAll('.post');
 
 const createPostBtn = document.getElementById('create-post-btn');
 
@@ -44,3 +45,12 @@ const closePostForm = function (event) {
 createPostBtn.addEventListener('click', openPostForm);
 cancelPostBtn.addEventListener('click', closePostForm);
 submitPostBtn.addEventListener('click', submitPostHandler);
+
+[...posts].forEach((post) =>
+    post.addEventListener('click', function (event) {
+        const post = event.currentTarget;
+        const postID = post.getAttribute('data-id');
+        window.location = `/post/${postID}`;
+        console.log(post);
+    })
+);

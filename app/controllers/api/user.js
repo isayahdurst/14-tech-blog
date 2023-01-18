@@ -63,6 +63,7 @@ userRouter.post('/login', async (req, res) => {
 
     if (!user) {
         res.status(400).json({ message: 'User not found' });
+        return;
     }
 
     const correctPassword = await user.checkPassword(password);

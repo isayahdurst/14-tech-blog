@@ -82,7 +82,7 @@ const loginFormHandler = async function () {
     }
 
     try {
-        const response = await fetch('api/user/login', {
+        const response = await fetch('/api/user/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ const loginFormHandler = async function () {
         const message = await response.json();
         console.log(message);
         setTimeout(() => {
-            window.location.replace('/');
+            window.location.reload();
         }, 1000);
     } catch (error) {
         console.log(error);

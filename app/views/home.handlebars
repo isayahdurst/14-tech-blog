@@ -9,7 +9,7 @@
         {{/unless}}
     </section>
 
-    <section class='section is-large my-0 py-5 animated'>
+    {{! <section class='section is-large my-0 py-5 animated'>
         <h1 class='title'><span class='has-text-danger'>new</span>
             blogPosts;
             <span class='has-text-grey-light'>// New Blog Posts</span></h1>
@@ -75,17 +75,23 @@
                 </article>
             </div>
         </div>
-    </section>
-    <section class='section animated is-large mt-5 pt-5'>
+    </section> }}
+    <section class='section animated is-large pt-0 mt-5'>
         <h2 class='title'>[<span
                 class='has-text-danger'
             >...</span>allBlogPosts];
             <span class='has-text-grey-light'>// All Blog Posts</span></h2>
         {{#each posts as |post|}}
-            <div class='box post has-background-info'>
+            <div
+                class='box post has-background-info preview'
+                data-postID='{{post.id}}'
+            >
                 <p class='title has-text-white'>{{post.title}}</p>
-                <p class='subtitle has-text-white'>{{post.content}}</p>
+                {{!-- <p class='subtitle has-text-white'>{{post.content}}</p> --}}
+                <small class='has-text-white'>Posted By:
+                    {{post.user.username}}<br />{{post.createdAt}}</small>
             </div>
         {{/each}}
     </section>
 </div>
+<script src='../js/home.js'></script>
