@@ -28,7 +28,7 @@ const submitPostHandler = async function (event) {
         console.log(error);
     }
 
-    const post = await response.json();
+    window.location.reload();
 };
 
 const openPostForm = function () {

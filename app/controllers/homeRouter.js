@@ -19,8 +19,6 @@ homeRouter.get('/', optionalAuth, async (req, res) => {
 
     const plainPosts = posts.map((post) => post.get({ plain: true }));
 
-    console.log(plainPosts);
-
     res.render('home', {
         user: user,
         posts: plainPosts,
@@ -73,8 +71,6 @@ homeRouter.get('/post/:id', optionalAuth, async (req, res) => {
     const plainPost = post.get({ plain: true });
     const contentArr = plainPost.content.split('\n').filter((el) => el);
     plainPost.contentArr = contentArr;
-
-    console.log(plainPost);
 
     if (user) {
         if (user.id === post.user_id) {
