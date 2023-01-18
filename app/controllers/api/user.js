@@ -32,7 +32,7 @@ userRouter.post('/register', async (req, res) => {
     }
 
     try {
-        const user = User.create({
+        const user = await User.create({
             first_name,
             last_name,
             username,
