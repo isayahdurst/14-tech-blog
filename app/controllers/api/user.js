@@ -71,6 +71,7 @@ userRouter.post('/login', async (req, res) => {
 
     if (!correctPassword) {
         res.status(401).json({ message: 'Incorred password' });
+        return;
     }
 
     const token = jwt.sign({ id: username }, process.env.JWT_KEY);

@@ -92,9 +92,11 @@ const loginFormHandler = async function () {
 
         const message = await response.json();
         console.log(message);
-        setTimeout(() => {
-            window.location.reload();
-        }, 1000);
+        if (response.ok) {
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        }
     } catch (error) {
         console.log(error);
         loginError.textContent = error.message;
@@ -130,10 +132,12 @@ const signupFormHandler = async function (event) {
         });
 
         const { message } = await response.json();
-        setTimeout(() => {
-            window.location.replace('/');
-        }, 1000);
         console.log(message);
+        if (response.ok) {
+            setTimeout(() => {
+                window.location.replace('/');
+            }, 1000);
+        }
     } catch (error) {
         console.log(error.message);
     }
