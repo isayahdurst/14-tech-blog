@@ -27,6 +27,7 @@ userRouter.post('/register', async (req, res) => {
     });
 
     if (user) {
+        console.log('user exists');
         res.json('User already exists');
         return;
     }
@@ -44,7 +45,10 @@ userRouter.post('/register', async (req, res) => {
             throw new Error('Unable to create user. Try again.');
         }
 
+        console.log('created user');
+
         const token = jwt.sign({ id: username }, process.env.JWT_KEY);
+        console.log('signed token');
         res.cookie('loginToken', token, { httpOnly: true });
         res.json({ message: 'logged in' });
     } catch (error) {
