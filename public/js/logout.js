@@ -3,11 +3,13 @@ const logoutBtn = document.getElementById('logout');
 const logout = async (event) => {
     event?.preventDefault();
 
-    const response = await fetch('/api/user/logout');
+    const response = await fetch('/api/user/logout', {
+        redirect: 'follow',
+    });
 
-    /* if (response.ok) {
-        window.location.reload();
-    } */
+    if (response.redirected) {
+        window.location.href = response.url;
+    }
 
     console.log(response?.status);
 
