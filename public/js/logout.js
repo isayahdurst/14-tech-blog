@@ -5,9 +5,9 @@ const logout = async (event) => {
 
     const response = await fetch('/api/user/logout');
 
-    if (response.ok) {
+    /* if (response.ok) {
         window.location.reload();
-    }
+    } */
 
     console.log(response?.status);
 
@@ -24,7 +24,6 @@ const timer = {
         const interval = setInterval(() => {
             if (this.timeRemaining > 0) {
                 this.timeRemaining -= 1000;
-                console.log(this.timeRemaining);
             } else {
                 clearInterval(interval);
                 logout();
