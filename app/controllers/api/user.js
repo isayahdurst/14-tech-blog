@@ -86,7 +86,8 @@ userRouter.post('/login', async (req, res) => {
 userRouter.get('/logout', async (req, res) => {
     /* const { loginToken } = req.cookies;
     console.log(loginToken); */
-    res.status(200).redirect('/dashboard');
+    res.status(200).json({ message: 'You should be redirected' });
+    res.redirect('/dashboard');
 });
 
 module.exports = userRouter;
