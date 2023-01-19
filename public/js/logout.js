@@ -8,6 +8,8 @@ const logout = async (event) => {
     /* if (response.ok) {
         window.location.reload();
     } */
+
+    console.log(response);
 };
 
 const timer = {
