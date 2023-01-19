@@ -5,9 +5,9 @@ const logout = async (event) => {
 
     const response = await fetch('/api/user/logout');
 
-    if (response.ok) {
+    /* if (response.ok) {
         window.location.reload();
-    }
+    } */
 };
 
 const timer = {
