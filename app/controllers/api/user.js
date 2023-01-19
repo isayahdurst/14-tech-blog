@@ -83,7 +83,7 @@ userRouter.post('/login', async (req, res) => {
     res.json({ message: 'Logged in successfully' });
 });
 
-userRouter.get('/logout', async (req, res) => {
+/* userRouter.get('/logout', async (req, res) => {
     console.log(process.env.DOMAIN);
     const { loginToken } = req.cookies;
     console.log(loginToken);
@@ -92,9 +92,19 @@ userRouter.get('/logout', async (req, res) => {
             path: '/',
             domain: process.env.DOMAIN || 'localhost',
             maxAge: 0,
-            sameSite: 'none',
-            secure: true,
         })
-        .redirect('/dashboard');
+        .redirect('/');
+}); */
+
+userRouter.get('/logout', async (req, res) => {
+    console.log(req.cookies);
+    res.status(200)
+        .clearCookie('logintoken', {
+            path: '/',
+            domain: process.env.DOMAIN || 'localhost',
+            expires: new Date(1),
+        })
+        .redirect('/login');
 });
+
 module.exports = userRouter;
