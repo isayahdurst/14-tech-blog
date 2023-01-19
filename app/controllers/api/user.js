@@ -84,6 +84,7 @@ userRouter.post('/login', async (req, res) => {
 });
 
 userRouter.get('/logout', async (req, res) => {
+    console.log(process.env.DOMAIN);
     res.clearCookie('loginToken', {
         path: '/',
         domain: process.env.DOMAIN || 'localhost',
