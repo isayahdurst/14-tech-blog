@@ -93,6 +93,7 @@ userRouter.get('/logout', async (req, res) => {
             expires: new Date(0),
             domain: process.env.DOMAIN || 'localhost',
             path: '/',
+            secure: true,
         })
         .redirect('/');
 });
