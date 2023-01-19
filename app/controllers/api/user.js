@@ -89,6 +89,6 @@ userRouter.get('/logout', async (req, res) => {
         path: '/',
         domain: process.env.DOMAIN || 'localhost',
         expires: new Date(1),
-    }).redirect('/');
+    });
 });
 module.exports = userRouter;
