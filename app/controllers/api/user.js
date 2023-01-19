@@ -49,7 +49,11 @@ userRouter.post('/register', async (req, res) => {
 
         const token = jwt.sign({ id: username }, process.env.JWT_KEY);
         console.log('signed token');
-        res.cookie('loginToken', token, { httpOnly: true });
+        res.cookie('loginToken', token, {
+            httpOnly: true,
+            domain: process.env.DOMAIN || 'localhost',
+            expires: new Date(Date.now() + 3600000),
+        });
         res.json({ message: 'logged in' });
     } catch (error) {
         console.log(error.message);
@@ -81,8 +85,8 @@ userRouter.post('/login', async (req, res) => {
     const token = jwt.sign({ id: username }, process.env.JWT_KEY);
     res.cookie('loginToken', token, {
         httpOnly: true,
-        secure: true,
         expires: new Date(Date.now() + 3600000),
+        domain: process.env.DOMAIN || 'localhost',
     });
     res.json({ message: 'Logged in successfully' });
 });
@@ -90,12 +94,11 @@ userRouter.post('/login', async (req, res) => {
 userRouter.get('/logout', async (req, res) => {
     res.status(200)
         .clearCookie('loginToken', {
-            expires: new Date(0),
+            httpOnly: true,
+            expires: new Date(1),
             domain: process.env.DOMAIN || 'localhost',
-            path: '/',
-            secure: true,
         })
-        .redirect('/');
+        .redirect(302, '/');
 });
 
 module.exports = userRouter;
