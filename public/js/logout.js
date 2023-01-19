@@ -9,6 +9,8 @@ const logout = async (event) => {
         window.location.reload();
     }
 
+    console.log(response?.status);
+
     console.log(response);
 };
 
