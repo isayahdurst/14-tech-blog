@@ -79,7 +79,10 @@ userRouter.post('/login', async (req, res) => {
     }
 
     const token = jwt.sign({ id: username }, process.env.JWT_KEY);
-    res.cookie('loginToken', token, { httpOnly: true });
+    res.cookie('loginToken', token, {
+        httpOnly: true,
+        expires: new Date(Date.now() + 3600000),
+    });
     res.json({ message: 'Logged in successfully' });
 });
 
