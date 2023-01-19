@@ -90,7 +90,7 @@ userRouter.get('/logout', async (req, res) => {
     res.clearCookie('loginToken', {
         path: '/',
         domain: process.env.DOMAIN || 'localhost',
-        expires: new Date(1),
+        maxAge: 0,
     });
     res.redirect('/');
 });
