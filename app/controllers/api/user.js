@@ -87,11 +87,11 @@ userRouter.get('/logout', async (req, res) => {
     console.log(process.env.DOMAIN);
     const { loginToken } = req.cookies;
     console.log(loginToken);
-    res.status(200).clearCookie('loginToken', {
+    res.clearCookie('loginToken', {
         path: '/',
         domain: process.env.DOMAIN || 'localhost',
         expires: new Date(1),
     });
-    res.end();
+    res.redirect('/');
 });
 module.exports = userRouter;
