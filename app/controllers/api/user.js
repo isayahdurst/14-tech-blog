@@ -89,7 +89,7 @@ userRouter.post('/login', async (req, res) => {
 userRouter.get('/logout', async (req, res) => {
     res.status(200)
         .clearCookie('loginToken', {
-            maxAge: 0,
+            expires: new Date(0),
             domain: process.env.DOMAIN || 'localhost',
             path: '/',
         })
