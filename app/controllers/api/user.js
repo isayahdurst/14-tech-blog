@@ -92,6 +92,6 @@ userRouter.get('/logout', async (req, res) => {
         domain: process.env.DOMAIN || 'localhost',
         maxAge: 0,
     });
-    res.redirect('/');
+    res.redirect('/dashboard');
 });
 module.exports = userRouter;
