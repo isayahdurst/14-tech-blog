@@ -27,7 +27,7 @@ userRouter.post('/register', async (req, res) => {
     });
 
     if (user) {
-        console.log('user exists');
+        console.log(user);
         res.json('User already exists');
         return;
     }
