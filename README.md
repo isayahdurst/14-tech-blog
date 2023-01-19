@@ -21,7 +21,7 @@ This project is designed to showcase the use of the MVC framework to organize co
 <a href="https://www.github.com/isayahdurst/14-tech-blog"><strong>Explore the docs »</strong></a>
 <br />
 <br />
-<a href="https://www.github.com/isayahdurst/14-tech-blog">View Demo</a>
+<a href="https://isayah-tech-blog.herokuapp.com/">View Demo</a>
 ·
 <a href="https://www.github.com/isayahdurst/14-tech-blog/issues">Report Bug</a>
 ·
@@ -52,7 +52,7 @@ This project is designed to showcase the use of the MVC framework to organize co
 
 ## About The Project
 
-<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
+[![Tech Blog Screenshot][product-screenshot]](https://isayah-tech-blog.herokuapp.com/)
 
 What was the motivation behind creating this project?
 
@@ -118,7 +118,7 @@ Distributed under the MIT License License. See `LICENSE.txt` for more informatio
 [license-shield]: https://img.shields.io/github/license/isayahdurst/14-tech-blog.svg?style=for-the-badge
 [license-url]: https://www.github.com/isayahdurst/14-tech-blog/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: public/images/screenshot.JPG
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
