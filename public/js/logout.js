@@ -10,10 +10,6 @@ const logout = async (event) => {
     if (response.redirected) {
         window.location.href = response.url;
     }
-
-    console.log(response?.status);
-
-    console.log(response);
 };
 
 const timer = {

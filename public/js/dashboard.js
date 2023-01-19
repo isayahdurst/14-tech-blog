@@ -51,6 +51,5 @@ submitPostBtn.addEventListener('click', submitPostHandler);
         const post = event.currentTarget;
         const postID = post.getAttribute('data-id');
         window.location = `/post/${postID}`;
-        console.log(post);
     })
 );
