@@ -51,7 +51,7 @@ userRouter.post('/register', async (req, res) => {
         console.log('signed token');
         res.cookie('loginToken', token, {
             httpOnly: true,
-            domain: process.env.DOMAIN || 'localhost',
+            /* domain: process.env.DOMAIN || 'localhost', */
             expires: new Date(Date.now() + 3600000),
         });
         res.json({ message: 'logged in' });
@@ -86,12 +86,12 @@ userRouter.post('/login', async (req, res) => {
     res.cookie('loginToken', token, {
         httpOnly: true,
         expires: new Date(Date.now() + 3600000),
-        domain: process.env.DOMAIN || 'localhost',
+        /* domain: process.env.DOMAIN || 'localhost', */
     });
     res.json({ message: 'Logged in successfully' });
 });
 
-userRouter.get('/logout', async (req, res) => {
+/* userRouter.get('/logout', async (req, res) => {
     res.status(200)
         .clearCookie('loginToken', {
             httpOnly: true,
@@ -99,6 +99,10 @@ userRouter.get('/logout', async (req, res) => {
             domain: process.env.DOMAIN || 'localhost',
         })
         .redirect(302, '/');
+}); */
+
+userRouter.get('/logout', async (req, res) => {
+    res.status(200).clearCookie('loginToken').redirect(302, '/');
 });
 
 module.exports = userRouter;

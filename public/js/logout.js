@@ -7,9 +7,9 @@ const logout = async (event) => {
         redirect: 'follow',
     });
 
-    if (response.redirected) {
+    /* if (response.redirected) {
         window.location.href = response.url;
-    }
+    } */
 
     console.log(response?.status);
 
