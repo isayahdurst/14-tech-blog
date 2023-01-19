@@ -86,7 +86,7 @@ userRouter.post('/login', async (req, res) => {
 userRouter.get('/logout', async (req, res) => {
     /* const { loginToken } = req.cookies;
     console.log(loginToken); */
-    res.status(200).redirect('/');
+    res.status(200).redirect('/dashboard');
 });
 
 module.exports = userRouter;
